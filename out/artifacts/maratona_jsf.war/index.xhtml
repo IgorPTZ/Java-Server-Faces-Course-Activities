@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+</h:head>
+<!-- O comando estudanteRegistrarBean.estudante.nome eh equivalente a estudanteRegistrarBean.getEstudante().getNome() -->
+<h:body>
+    <h1>Exibição de atributos</h1>
+    <p:importEnum type="br.com.devdojo.maratonajsf.model.enums.Turno" var="Turno" allSuffix="ALL_ENUM_VALUES"/>
+    <h:outputLabel value="Hello World!!!"/><br/>
+    <h:outputLabel value="#{estudanteRegistrarBean.estudante.nome}"/>
+    <h:outputLabel value="#{estudanteRegistrarBean.estudante.sobrenome}"/><br/>
+    <h:outputLabel value="#{estudanteRegistrarBean.estudante.turno}"/><br/><br/>
+
+    <h:outputText value="Comparações"/><br/>
+    <h:outputLabel value="#{estudanteRegistrarBean.estudante.nota1 == estudanteRegistrarBean.estudante.nota2}"/><br/>
+    <h:outputLabel
+            value="#{estudanteRegistarBean.estudante.nota1 == 0 and estudanteRegistarBean.estudante.nome.equals('Igor')}"/><br/>
+    <h:outputLabel value="#{estudanteRegistrarBean.estudante.nota1 le estudanteRegistrarBean.estudante.nota3}"/><br/>
+    <h:outputLabel value="#{estudanteRegistrarBean.estudante.nota1 eq 0 ? 'ZERO' : 'NAO ZERO'}"/><br/>
+    <h:outputLabel value="#{estudanteRegistrarBean.estudante.turno eq Turno.VESPERTINO}"/><br/>
+
+    <!-- Array,List e Set -->
+    <h1>Array e List</h1>
+
+    <!-- sem loop -->
+    <h:outputLabel value="#{estudanteRegistrarBean.nomesArray[0]} #{estudanteRegistrarBean.nomesArray[1]} #{estudanteRegistrarBean.nomesArray[2]}"/><br/>
+    <h:outputLabel value="#{estudanteRegistrarBean.nomesList.get(0)} #{estudanteRegistrarBean.nomesList.get(1)} #{estudanteRegistrarBean.nomesList.get(2)}"/><br/>
+    <h:outputLabel value="#{estudanteRegistrarBean.nomesMap.get('a')} #{estudanteRegistrarBean.nomesMap.get('b')} #{estudanteRegistrarBean.nomesMap.get('c')}"/><br/>
+    <br/>
+
+    <!-- com loop -->
+    <ui:repeat value="#{estudanteRegistrarBean.nomesArray}" var="nome">
+        <h:outputLabel value="#{nome} "/>
+    </ui:repeat>
+    <br/>
+
+    <ui:repeat value="#{estudanteRegistrarBean.nomesList}" var="nome">
+        <h:outputLabel value="#{nome} " />
+    </ui:repeat>
+    <br/>
+
+    <ui:repeat value="#{estudanteRegistrarBean.nomesSet}" var="nome">
+        <h:outputLabel value="#{nome} " />
+    </ui:repeat>
+    <br/>
+
+    <ui:repeat value="#{estudanteRegistrarBean.nomesMap.entrySet().toArray()}" var="entry">
+        <h:outputLabel value="#{entry.key} - #{entry.value}"  /><br/>
+    </ui:repeat>
+    <br/>
+    <br/>
+
+    <!-- List -->
+    <ui:repeat value="#{['Igor', 'dos', 'Santos', 'Pereira']}" var="temp">
+        #{temp}
+    </ui:repeat>
+    <br/>
+
+    <!-- Set -->
+    <ui:repeat value="#{{'Edna', 'dos', 'Santos', 'Pereira'}}" var="temp">
+        #{temp}
+    </ui:repeat>
+    <br/>
+
+    <!-- Map -->
+    <ui:repeat value="#{{'Nome':'Igor', 'Idade':'26','Sexo':'Masculino'}}" var="temp">
+        #{temp}<br/>
+    </ui:repeat>
+
+    <!-- Executando metodos no Bean -->
+    <h1>Executando metodos no Bean</h1>
+
+    #{estudanteRegistrarBean.executar()}
+    #{estudanteRegistrarBean.executar("5")}
+
+    <h:form>
+        <h:commandButton value="Go to next page" action="#{estudanteRegistrarBean.retornarIndex()}" />
+        <br/>
+        <h:commandButton value="Call alert" onclick="callAlert('Java Server Faces Course')"/>
+        <br />
+        <h:commandButton value="Call other alert"  onclick="callConsole('#{estudanteRegistrarBean.estudante.nome}')" />
+    </h:form>
+
+    <!-- Imprimindo CSS com Expressive Language (EL) -->
+    <br/>
+    <br/>
+    <ui:repeat value="#{estudanteRegistrarBean.nomesList}" var="nome" varStatus="status">
+        <h:outputLabel value="#{nome}" style="color: #{status.index mod 2 == 0 ? 'red' : 'green'}"/><br/>
+    </ui:repeat>
+    <br/>
+    <br/>
+
+    <!-- Renderização condicional com Ajax -->
+    <h1>Renderização condicional com Ajax</h1>
+    <h:form id="form">
+        <h:commandButton value="Exibir Notas">
+            <f:ajax render="notasGrid" listener="#{estudanteRegistrarBean.renderizarNotas()}" />
+        </h:commandButton>
+
+        <h:commandButton value="Esconder Notas">
+            <f:ajax render="notasGrid"  listener="#{estudanteRegistrarBean.esconderNotas()}"/>
+        </h:commandButton>
+        <br/>
+        <br/>
+        <h:panelGrid id="notasGrid">
+            <h:outputText value="#{estudanteRegistrarBean.estudante.nome} " />
+            <h:outputText value="#{estudanteRegistrarBean.estudante.sobrenome}"/><br/>
+            <h:outputText value="#{estudanteRegistrarBean.estudante.turno}" /><br/>
+            <h:outputText value="#{estudanteRegistrarBean.estudante.nota1}" rendered="#{estudanteRegistrarBean.exibirNotas}"/><br/>
+            <h:outputText value="#{estudanteRegistrarBean.estudante.nota2}" rendered="#{estudanteRegistrarBean.exibirNotas}"/><br/>
+            <h:outputText value="#{estudanteRegistrarBean.estudante.nota3}" rendered="#{estudanteRegistrarBean.exibirNotas}"/><br/>
+        </h:panelGrid>
+        <br/>
+        <br/>
+
+        <h:commandButton value="Exibir Link">
+           <f:ajax render="pageLink" listener="#{estudanteRegistrarBean.renderizarLink()}" />
+        </h:commandButton>
+
+        <h:commandButton value="Esconder Link">
+            <f:ajax render="pageLink" listener="#{estudanteRegistrarBean.esconderLink()}" />
+        </h:commandButton>
+
+        <br/>
+        <br/>
+        <h:panelGroup id="pageLink">
+            <ui:fragment id="fragmentLink" rendered="#{estudanteRegistrarBean.exibirLink}">
+                <a href="http://www.google.com" target="_blank">Go to Google</a>
+            </ui:fragment>
+        </h:panelGroup>
+    </h:form>
+
+    <br/>
+    <br/>
+    <!-- Uso de lambdas -->
+    <h1>Uso de lambdas</h1>
+    <br/>
+    #{(soma -> soma + num)(10)}<br />
+    #{((v1, v2, v3) -> v1 * v2 * v3)(1, 5, 10)}<br />
+    #{(x -> x * x * x)(50)}<br />
+    #{calcularCubo = (y -> y * y * y); calcularCubo(50)}<br />
+    <h:form>
+        <h:commandButton value="Calcular o cubo" actionListener="#{estudanteRegistrarBean.calcularCubo((y -> y * y * y), 60)}" />
+    </h:form>
+    <ui:repeat value="#{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].stream().filter(v -> v > 5).toList()}" var="number">
+        #{number}
+    </ui:repeat>
+</h:body>
+
+<!-- Manipulação de componentes JSF com Javascript -->
+<script type="text/javascript">
+    function callAlert(parameter) {
+        alert(parameter);
+    }
+
+    function callConsole(parameter) {
+        console.log(parameter);
+    }
+</script>
+</html>
