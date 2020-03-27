@@ -7,13 +7,15 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
     <h:body>
+        <h:messages/>
         <h:form>
             <h2>First registration page</h2>
             <h:panelGrid columns="2">
                 <h:outputLabel value="nome" />
-                <h:inputText value="#{testeFlowBean.nome}" />
+                <h:inputText value="#{testeFlowBean.nome}" required="true" requiredMessage="First Name is required"
+                />
                 <h:outputLabel value="sobrenome" />
-                <h:inputText value="#{testeFlowBean.sobrenome}" />
+                <h:inputText value="#{testeFlowBean.sobrenome}" required="true" requiredMessage="Last Name is required"/>
                 <h:commandButton value="Next" action="registration2?faces-redirect=true"/>
             </h:panelGrid>
         </h:form>
