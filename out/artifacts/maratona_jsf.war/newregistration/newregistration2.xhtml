@@ -8,9 +8,13 @@
 <h:head>
     <h:body>
         <h:form>
-            <h2>FlowScoped's entry point</h2>
-            <h:commandButton value="Start flow" action="registration" />
-            <h:commandButton value="Start new flow" action="newregistration" />
+            <h2>Second registration page</h2>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="endereco" />
+                <h:inputText value="#{testeFlowBuilderBean.endereco}" />
+                <h:commandButton value="Back" action="newregistration?faces-redirect=true" />
+                <h:commandButton value="Validate" action="callNewPendencies" />
+            </h:panelGrid>
         </h:form>
     </h:body>
 </h:head>
