@@ -10,6 +10,8 @@
         <h:form>
             <h:outputText value="#{testeApplicationBean.categoriaList}"/><br/>
             <h:outputText value="#{testeRequestBean.personagemSelecionado}"/><br/>
+            <h:outputText value="#{loginBean.estudante.nome}" />
+
             <h:commandButton actionListener="#{testeRequestBean.selecionarPersonagem()}"
                                value="Selecionar Personagem"/>
             <h:commandButton actionListener="#{testeRequestBean.selecionarPersonagem()}"
