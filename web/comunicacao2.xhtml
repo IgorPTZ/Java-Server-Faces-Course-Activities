@@ -11,9 +11,10 @@
 
 <h:body>
     <h:form>
-        <h2>FlowScoped's entry point</h2>
-        <h:commandButton value="Start flow" action="registration" />
-        <h:commandButton value="Start new flow" action="newregistration" />
+        <h:panelGrid columns="1">
+            <h:inputText value="#{comunicacaoTeste2Bean.nome}"/>
+            <h:inputText value="#{comunicacaoTeste2Bean.sobrenome}" />
+        </h:panelGrid>
     </h:form>
 </h:body>
 

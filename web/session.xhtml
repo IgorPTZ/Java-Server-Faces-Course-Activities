@@ -6,18 +6,21 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
-    <h:body>
-        <h:form>
-            <h:outputText value="#{testeApplicationBean.categoriaList}"/><br/>
-            <h:outputText value="#{testeSessionBean.personagemSelecionado}"/><br/>
-            <h:commandButton actionListener="#{testeSessionBean.selecionarPersonagem()}"
-                             value="Selecionar Personagem"/>
-            <h:commandButton actionListener="#{testeSessionBean.selecionarPersonagem()}"
-                             value="Selecionar Personagem Forward" action="session2" />
-            <h:commandButton actionListener="#{testeSessionBean.selecionarPersonagem()}"
-                             value="Selecionar Personagem Redirect" action="session2?faces-redirect=true" />
-            <h:commandButton value="Encerrar sessão" action="#{testeSessionBean.logout()}" />
-        </h:form>
-    </h:body>
+
 </h:head>
+
+<h:body>
+    <h:form>
+        <h:outputText value="#{testeApplicationBean.categoriaList}"/><br/>
+        <h:outputText value="#{testeSessionBean.personagemSelecionado}"/><br/>
+        <h:commandButton actionListener="#{testeSessionBean.selecionarPersonagem()}"
+                         value="Selecionar Personagem"/>
+        <h:commandButton actionListener="#{testeSessionBean.selecionarPersonagem()}"
+                         value="Selecionar Personagem Forward" action="session2" />
+        <h:commandButton actionListener="#{testeSessionBean.selecionarPersonagem()}"
+                         value="Selecionar Personagem Redirect" action="session2?faces-redirect=true" />
+        <h:commandButton value="Encerrar sessão" action="#{testeSessionBean.logout()}" />
+    </h:form>
+</h:body>
+
 </html>

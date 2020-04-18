@@ -6,22 +6,24 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
-    <h:body>
-        <h:form>
-            <h:outputText value="#{testeApplicationBean.categoriaList}"/><br/>
-            <h:outputText value="#{testeConversationBean.personagemSelecionado}"/><br/>
-            <h:commandButton actionListener="#{testeConversationBean.selecionarPersonagem()}"
-                             value="Selecionar Personagem"/>
-            <h:commandButton actionListener="#{testeConversationBean.selecionarPersonagem()}"
-                             value="Selecionar Personagem Forward" action="conversation2" />
-            <h:commandButton actionListener="#{testeConversationBean.selecionarPersonagem()}"
-                             value="Selecionar Personagem Redirect" action="conversation2?faces-redirect=true" />
-            <h:link outcome="conversation2" value="Go to conversation 2">
-                <f:param name="cid" value="#{testeConversationBean.conversation.id}" />
-            </h:link>
-            <h:commandButton action="#{testeConversationBean.endConversation()}"
-                             value="Finalizar Conversation" />
-        </h:form>
-    </h:body>
+
 </h:head>
+
+<h:body>
+    <h:form>
+        <h:outputText value="#{testeApplicationBean.categoriaList}"/><br/>
+        <h:outputText value="#{testeConversationBean.personagemSelecionado}"/><br/>
+        <h:commandButton actionListener="#{testeConversationBean.selecionarPersonagem()}"
+                         value="Selecionar Personagem"/>
+        <h:commandButton actionListener="#{testeConversationBean.selecionarPersonagem()}"
+                         value="Selecionar Personagem Forward" action="conversation2" />
+        <h:commandButton actionListener="#{testeConversationBean.selecionarPersonagem()}"
+                         value="Selecionar Personagem Redirect" action="conversation2?faces-redirect=true" />
+        <h:link outcome="conversation2" value="Go to conversation 2">
+            <f:param name="cid" value="#{testeConversationBean.conversation.id}" />
+        </h:link>
+        <h:commandButton action="#{testeConversationBean.endConversation()}"
+                         value="Finalizar Conversation" />
+    </h:form>
+</h:body>
 </html>
