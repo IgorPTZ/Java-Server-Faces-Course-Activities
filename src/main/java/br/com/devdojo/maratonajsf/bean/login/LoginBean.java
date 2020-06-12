@@ -7,6 +7,10 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.util.List;
+import java.util.Locale;
+
+import static java.util.Arrays.asList;
 
 @Named
 @SessionScoped
@@ -14,10 +18,14 @@ public class LoginBean implements Serializable {
     private String nome;
     private String senha;
     private Estudante estudante;
+    private String idioma;
+    private List<Locale> localeList = asList(new Locale("en"), new Locale("pt"));
+    private int quantidadeDeMensagens;
 
     public String logar() {
-        if(this.getNome().equals("igor.pereira") && this.getSenha().equals("teste321")) {
+        if(this.getNome().equals("i") && this.getSenha().equals("1")) {
              this.setEstudante(new Estudante());
+             quantidadeDeMensagens++;
              return "/restricted/iniciosistema.xhtml?faces-redirect=true";
         }
 
@@ -56,5 +64,29 @@ public class LoginBean implements Serializable {
 
     public void setEstudante(Estudante estudante) {
         this.estudante = estudante;
+    }
+
+    public String getIdioma() {
+        return idioma;
+    }
+
+    public void setIdioma(String idioma) {
+        this.idioma = idioma;
+    }
+
+    public List<Locale> getLocaleList() {
+        return localeList;
+    }
+
+    public void setLocaleList(List<Locale> localeList) {
+        this.localeList = localeList;
+    }
+
+    public int getQuantidadeDeMensagens() {
+        return quantidadeDeMensagens;
+    }
+
+    public void setQuantidadeDeMensagens(int quantidadeDeMensagens) {
+        this.quantidadeDeMensagens = quantidadeDeMensagens;
     }
 }

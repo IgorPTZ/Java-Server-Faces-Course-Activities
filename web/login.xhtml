@@ -19,6 +19,10 @@
             <h:outputLabel value="Senha" />
             <h:inputSecret value="#{loginBean.senha}" required="true" requiredMessage="A senha é um campo requerido" />
 
+            <h:selectOneMenu value="#{loginBean.idioma}">
+                <f:selectItems value="#{loginBean.localeList}" var="locale"
+                        itemValue="#{locale.language}" itemLabel="#{locale.displayLanguage}"/>
+            </h:selectOneMenu>
             <h:commandButton value="Logar" action="#{loginBean.logar}" />
         </h:panelGrid>
     </h:form>

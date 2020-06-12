@@ -14,10 +14,12 @@ public class ComunicacaoTeste3Bean implements Serializable {
 
     private String nome;
     private String sobrenome;
+    private String data;
 
     public void init() {
         System.out.println(this.nome);
         System.out.println(this.sobrenome);
+        System.out.println(this.data);
     }
 
     public String redirecionarParaResultado() {
@@ -39,5 +41,13 @@ public class ComunicacaoTeste3Bean implements Serializable {
 
     public void setSobrenome(String sobrenome) {
         this.sobrenome = sobrenome;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
     }
 }

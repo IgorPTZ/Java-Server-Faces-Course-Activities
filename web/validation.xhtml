@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:o="http://omnifaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+
+</h:head>
+
+<h:body>
+    <p:messages autoUpdate="true"/>
+
+    <h:form>
+        <h:panelGrid columns="1">
+            <h:outputText value="Senha:"/><br/>
+
+            <h:inputText id="senha" value="#{validationTesteBean.password}"
+                         required="true" requiredMessage="Digite a senha"/>
+
+            <h:outputText value="Confirmar senha"/>
+
+            <h:inputText id="confirmar_senha"
+                         required="true" requiredMessage="Confirme a senha" />
+
+            <o:validateEqual components="senha confirmar_senha" message="As senhas não são equivalentes" />
+            <h:commandButton value="Salvar" actionListener="#{validationTesteBean.salvar()}"/>
+        </h:panelGrid>
+    </h:form>
+</h:body>
+
+</html>

@@ -6,12 +6,25 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
+
+</h:head>
+
+<f:view locale="#{loginBean.idioma}">
     <h:body>
+        <h:outputText value="#{loginBean.idioma}" />
         <h:form>
-            <h1>Usuario logado: #{loginBean.estudante.nome}</h1>
+            <h:outputFormat value="#{m.userLogged}">
+                <f:param value="#{loginBean.estudante.nome}" />
+                <f:param value="#{loginBean.estudante.sobrenome}" />
+            </h:outputFormat>
+            <br />
+            <h:outputFormat value="#{m.alert}">
+                <f:param value="#{loginBean.quantidadeDeMensagens}" />
+            </h:outputFormat>
             <h:commandButton value="Logout" action="#{loginBean.logout}" />
         </h:form>
     </h:body>
-</h:head>
+</f:view>
+
 </html>
 
