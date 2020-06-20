@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head></h:head>
+<h:body>
+    <h:form>
+        <h:panelGrid columns="1">
+            <h:inputText value="#{ajaxTesteBean.nome}" id="nome"/>
+            <h:inputText value="#{ajaxTesteBean.sobrenome}" id="sobrenome" />
+
+            <h:commandButton value="Enviar" actionListener="#{ajaxTesteBean.toUpperCase}">
+                <f:ajax execute="nome sobrenome" render="nome_transformado sobrenome_transformado"/>
+            </h:commandButton>
+
+            <h:outputText value="#{ajaxTesteBean.nome}" id="nome_transformado"/>
+            <h:outputText value="#{ajaxTesteBean.sobrenome}" id="sobrenome_transformado"/>
+
+            <h:inputText value="#{ajaxTesteBean.nome}">
+                <f:ajax event="blur" listener="#{ajaxTesteBean.toUpperCaseNome}" render="@this nome_transformado"/>
+            </h:inputText>
+
+            <h:selectOneMenu value="#{ajaxTesteBean.paisSelecionado}">
+                <f:selectItem value="#{null}" itemLabel="Selecione um país" />
+                <f:selectItems value="#{ajaxTesteBean.listaDeCidades.keySet()}"
+                               var="pais" itemLabel="#{pais}" itemValue="#{pais}" />
+                <f:ajax listener="#{ajaxTesteBean.selecionarPais}" render="cidades"/>
+            </h:selectOneMenu>
+
+            <h:selectOneMenu id="cidades" value="#{ajaxTesteBean.cidadeSelecionada}">
+                <f:selectItem value="#{null}" itemLabel="Selecione uma cidade" />
+                <f:selectItems value="#{ajaxTesteBean.cidades}"
+                               var="cidade" itemLabel="#{cidade}" itemValue="#{cidade}" />
+            </h:selectOneMenu>
+        </h:panelGrid>
+    </h:form>
+</h:body>
+</html>
