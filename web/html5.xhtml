@@ -10,7 +10,9 @@
 <h:head></h:head>
 <h:body>
     <p:messages autoUpdate="true" id="messages" />
-
+    <f:metadata>
+        <f:viewAction action="#{html5TesteBean.init}"/>
+    </f:metadata>
     <h:form id="form">
         <h:panelGrid columns="1">
             <h:inputText value="#{html5TesteBean.email}"

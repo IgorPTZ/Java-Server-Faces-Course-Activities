@@ -10,12 +10,18 @@ import java.util.Map;
 @ViewScoped
 public class Html5TesteBean implements Serializable {
 
+    private int numero;
     private String email;
+    private String url;
     private Map<String, String> atributos = new HashMap<>();
 
     public void init() {
         atributos.put("type", "email");
         atributos.put("placeholder", "Insert your email");
+    }
+
+    public void salvar() {
+        System.out.println(email);
     }
 
     public String getEmail() {
@@ -32,5 +38,21 @@ public class Html5TesteBean implements Serializable {
 
     public void setAtributos(Map<String, String> atributos) {
         this.atributos = atributos;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }
