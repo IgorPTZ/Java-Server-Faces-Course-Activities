@@ -6,6 +6,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:o="http://omnifaces.org/ui"
+      xmlns:dc="http://devdojo.com.br/components"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
 
@@ -71,6 +72,7 @@
                 <f:facet name="header"></f:facet>
                 <h:commandLink actionListener="#{dataTableTesteBean.remover(estudante)}" rendered="#{not estudante.editando}">
                     <h:outputText value="Remover" />
+                    <dc:comfirmDelete />
                 </h:commandLink>
             </h:column>
 

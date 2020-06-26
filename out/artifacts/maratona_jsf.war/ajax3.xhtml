@@ -6,19 +6,23 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-<h:head></h:head>
+<h:head>
+    <h:outputStylesheet library ="default"  name="css/style.css"/>
+    <h:outputScript library ="default" name="js/main.js" />
+</h:head>
 <h:body>
     <p:messages autoUpdate="true" id="messages" />
     <h:outputText value="É uma requisição ajax ? #{facesContext.postback}" id="postback"/>
 
     <h:form id="form">
         <h:panelGrid columns="1">
+            <h:graphicImage library ="default" name="images/c++ image.png" />
             <h:inputText value="#{ajaxTesteBean.sobrenome}" id="nome" required="true">
                 <f:ajax event="keyup" listener="#{ajaxTesteBean.toUpperCaseNome()}"
                         render="nome_transformado" delay="1000" />
             </h:inputText>
             <h:outputText id="nome_transformado" value="#{ajaxTesteBean.nome}" />
-            <h:commandButton value="Enviar" />
+            <h:commandButton value="Enviar" styleClass="btn"/>
         </h:panelGrid>
     </h:form>
 </h:body>

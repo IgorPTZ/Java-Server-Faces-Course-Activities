@@ -17,7 +17,7 @@
                       required="required"
                       type="email"
                       jsf:value="#{html5TesteBean.email}"
-                      jsf:validator="#{validators.validateDuplicatedEmail}"/>
+                      jsf:validator="#{fileValidator.validateDuplicatedEmail}"/>
         <br />
 
         URL: <input jsf:id="url"

@@ -18,7 +18,7 @@
         <h:panelGrid columns="1">
             <f:ajax event="blur" render="postback" >
                 <h:inputText value="#{ajaxTesteBean.nome}" id="email"
-                             validator="#{validators.validateDuplicatedEmail}" required="true" />
+                             validator="#{fileValidator.validateDuplicatedEmail}" required="true" />
                 <h:inputText value="#{ajaxTesteBean.sobrenome}" id="nome" required="true" />
             </f:ajax>
             <h:commandButton value="Enviar" />

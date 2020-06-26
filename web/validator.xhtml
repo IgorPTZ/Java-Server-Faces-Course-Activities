@@ -16,7 +16,7 @@
     <h:outputText value="Email:"/><br/>
     <h:form>
         <h:inputText value="#{validatorTesteBean.estudante.email}"
-        validator="#{validators.validateDuplicatedEmail}"/>
+        validator="#{fileValidator.validateDuplicatedEmail}"/>
 
         <h:commandButton value="Salvar" actionListener="#{validatorTesteBean.salvar()}"/>
     </h:form>
